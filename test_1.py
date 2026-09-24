@@ -5,6 +5,8 @@ from validator import is_valid_voltage, classify_temperature, calculate_pass_rat
 
 path_to_create = Path(__file__).parent / "dummy_module_fixture_use.txt"
 
+
+
 @pytest.fixture
 def random_first_evens_list():
     random_len = int(random() * 100)
@@ -16,6 +18,21 @@ def random_first_evens_lists():
     path_to_create.write_text(str(int(random() * 100)))
     yield
     path_to_create.unlink()
+
+@pytest.mark.smoke
+def test_can_import_pathlib():
+    import pathlib
+    assert pathlib.Path is not None
+
+@pytest.mark.smoke
+def test_can_create_file(tmp_path):
+    import pathlib
+    path = tmp_path / "smoke.txt"
+    path.touch()
+    assert path.exists(), f"File {path} was not created"
+    path.unlink()
+
+
     
 
 def test_example():
