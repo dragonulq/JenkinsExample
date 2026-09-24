@@ -17,8 +17,10 @@ pipeline {
             }
         }
 
+
         stage('Smoke tests') {
             steps {
+                sh 'source .venv/bin/activate'
                 sh 'pytest -m smoke'
             }
         }
