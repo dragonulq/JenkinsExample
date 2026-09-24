@@ -21,7 +21,7 @@ def random_first_evens_lists():
 
 @pytest.mark.smoke
 def test_can_import_pathlib():
-    import pathlibs
+    import pathlib
     assert pathlib.Path is not None
 
 @pytest.mark.smoke
