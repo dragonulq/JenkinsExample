@@ -17,6 +17,12 @@ pipeline {
             }
         }
 
+        stage('Smoke tests') {
+            steps {
+                sh 'pytest -m smoke'
+            }
+        }
+
         stage('Run tests') {
             steps {
                 sh '.venv/bin/python -m pytest -v --junitxml=results.xml'
